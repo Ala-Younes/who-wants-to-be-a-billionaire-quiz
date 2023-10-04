@@ -1,20 +1,50 @@
-import { QuestionAnswerType } from "../../schema/quizSchema";
+import { useState } from "react";
+import { AnswerType, QuestionAnswerType } from "../../schema/quizSchema";
 import "./Quiz.scss";
 
 type Props = {
   data: QuestionAnswerType;
+  questionNumber: number;
+  setQuestionNumber: React.Dispatch<React.SetStateAction<number>>;
+  setIsGameover: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const Quiz = ({ data }: Props) => {
+const Quiz = ({
+  data,
+  questionNumber,
+  setQuestionNumber,
+  setIsGameover,
+}: Props) => {
+  const [questionStyle, setQuestionStyle] = useState("quiz__answers__answer");
+  const [selectedAnswer, setSelectedAnswer] = useState<AnswerType>();
+
+  const triggeredQuestion = data[questionNumber - 1];
+
+  const handleAnswerClick = (answer: AnswerType) => {
+    setSelectedAnswer(answer);
+    if (answer.correct) {
+      setQuestionStyle("quiz__answers__answer");
+      setQuestionStyle((prev) => `${prev} quiz__answers__answer--correct`);
+      setQuestionNumber((prev) => prev + 1);
+    } else {
+      setQuestionStyle("quiz__answers__answer");
+      setQuestionStyle((prev) => `${prev} quiz__answers__answer--wrong`);
+      setIsGameover(true);
+    }
+  };
   return (
     <div className={"quiz"}>
-      <div className="quiz__question">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, ullam.
-      </div>
+      <div className="quiz__question">{triggeredQuestion.question}</div>
       <div className="quiz__answers">
-        {["answer1", "answer2", "answer3", "answer4"].map((ans) => (
-          <div className="quiz__answers__answer" key={ans}>
-            {ans}
+        {triggeredQuestion.answers.map((ans) => (
+          <div
+            onClick={() => handleAnswerClick(ans)}
+            className={
+              selectedAnswer === ans ? questionStyle : "quiz__answers__answer"
+            }
+            key={ans.text}
+          >
+            {ans.text}
           </div>
         ))}
       </div>

@@ -17,6 +17,8 @@ $fontSize: 1.25rem;
     border: 2px solid white;
     border-radius: 0.625rem;
     margin-bottom: 1.25rem;
+    font-size: 1.25rem;
+    font-weight: 700;
   }
 
   &__answers {
@@ -42,6 +44,13 @@ $fontSize: 1.25rem;
 
       &:hover {
         background: rgb(107, 118, 152);
+      }
+
+      &--correct {
+        background: green;
+      }
+      &--wrong {
+        background: red;
       }
     }
   }

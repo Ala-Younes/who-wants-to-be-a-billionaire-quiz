@@ -5,4 +5,13 @@
   left: 0;
   right: 0;
   margin: auto;
+
+  &__replayBtn {
+    margin: 20px;
+    background: blue;
+    border: 5px solid blue;
+    padding: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+  }
 }

@@ -7,7 +7,11 @@
     position: absolute;
     bottom: 0;
     left: 0;
-    padding: 1.25rem;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 50%;
     border: 0.3125rem solid white;
     margin-bottom: 1.25rem;

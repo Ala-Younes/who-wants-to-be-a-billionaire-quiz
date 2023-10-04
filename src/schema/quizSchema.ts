@@ -21,5 +21,11 @@ const pyramidMoneySchema = z.array(pyramidMoneyObject);
 
 type QuestionAnswerType = z.infer<typeof dataSchema>;
 type pyramidMoneyType = z.infer<typeof pyramidMoneySchema>;
+type AnswerType = z.infer<typeof answerSchema>;
 
-export { type QuestionAnswerType, type pyramidMoneyType, dataSchema };
+export {
+  type QuestionAnswerType,
+  type pyramidMoneyType,
+  type AnswerType,
+  dataSchema,
+};
