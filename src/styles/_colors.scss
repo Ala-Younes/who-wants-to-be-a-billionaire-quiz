@@ -1,0 +1,15 @@
+$background-color: #020230;
+$question-color: #100241;
+$answer-primary-color: #0e0124;
+$answer-accent-color: #22074d;
+
+$backgroundImage: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0),
+    $background-color
+  ),
+  url("./assets/bg.jpg") center;
+
+$questionBackgroundColor: linear-gradient($question-color, black);
+
+$answerBackgroundColor: linear-gradient($answer-primary-color, $answer-accent-color);

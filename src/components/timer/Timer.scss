@@ -1,0 +1,17 @@
+.timer-container {
+  position: relative;
+  height: 60%;
+  width: 80%;
+
+  &__counter {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 1.25rem;
+    border-radius: 50%;
+    border: 0.3125rem solid white;
+    margin-bottom: 1.25rem;
+    font-size: 1.875rem;
+    font-weight: 700;
+  }
+}

@@ -1,0 +1,32 @@
+@mixin font-styles($font-size, $font-weight) {
+  font-size: $font-size;
+  font-weight: $font-weight;
+}
+
+.moneyPyramid {
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 25%;
+
+  &__gain {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+
+    &--number {
+      @include font-styles(18px, 100);
+      width: 20%;
+    }
+
+    &--amount {
+      @include font-styles(20px, 300);
+    }
+  }
+
+  .active {
+    background: teal;
+    border-radius: 10px;
+  }
+}
