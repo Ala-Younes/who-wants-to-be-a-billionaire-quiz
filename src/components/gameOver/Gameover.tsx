@@ -1,3 +1,4 @@
+import { useUserContext } from "../../context/UserContext";
 import "./Gameover.scss";
 
 type Props = {
@@ -6,10 +7,12 @@ type Props = {
   earnedMoney: string;
 };
 const Gameover = ({ setIsGameover, earnedMoney, setQuestionNumber }: Props) => {
+  const username = useUserContext();
   return (
     <div className="gameover">
       <span className="gameover__result">
-        You earned : <span className="gameover__result--amount">{earnedMoney}</span>
+        {username} earned :
+        <span className="gameover__result--amount">{earnedMoney}</span>
       </span>
       <button
         onClick={() => {
