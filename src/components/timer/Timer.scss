@@ -17,5 +17,9 @@
     margin-bottom: 1.25rem;
     font-size: 1.875rem;
     font-weight: 700;
+
+    &--no-time {
+      color: red;
+    }
   }
 }

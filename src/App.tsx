@@ -17,7 +17,10 @@ function App() {
       {!isGameover ? (
         <>
           <div className="quiz-container">
-            <Timer questionNumber={questionNumber} />
+            <Timer
+              setIsGameover={setIsGameover}
+              questionNumber={questionNumber}
+            />
             <Quiz
               data={data}
               questionNumber={questionNumber}

@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { AnswerType, QuestionAnswerType } from "../../schema/quizSchema";
 import "./Quiz.scss";
+import delay from "../../utils/Delay";
+import shuffle from "../../utils/Shuffle";
 
 type Props = {
   data: QuestionAnswerType;
@@ -17,26 +19,45 @@ const Quiz = ({
 }: Props) => {
   const [questionStyle, setQuestionStyle] = useState("quiz__answers__answer");
   const [selectedAnswer, setSelectedAnswer] = useState<AnswerType>();
+  const [shuffledAnswers, setShuffledAnswers] = useState<AnswerType[]>([]);
 
   const triggeredQuestion = data[questionNumber - 1];
 
-  const handleAnswerClick = (answer: AnswerType) => {
-    setSelectedAnswer(answer);
-    if (answer.correct) {
+  // Shuffle the answers only once when the component is mounted
+  useEffect(() => {
+    const shuffled = shuffle([...triggeredQuestion.answers]);
+    setShuffledAnswers(shuffled);
+  }, [triggeredQuestion.answers]);
+
+  const handleAnswerClick = useCallback(
+    (answer: AnswerType) => {
+      setSelectedAnswer(answer);
+      const isCorrect = answer.correct;
+
       setQuestionStyle("quiz__answers__answer");
-      setQuestionStyle((prev) => `${prev} quiz__answers__answer--correct`);
-      setQuestionNumber((prev) => prev + 1);
-    } else {
-      setQuestionStyle("quiz__answers__answer");
-      setQuestionStyle((prev) => `${prev} quiz__answers__answer--wrong`);
-      setIsGameover(true);
-    }
-  };
+      setQuestionStyle((prev) =>
+        isCorrect
+          ? `${prev} quiz__answers__answer--correct`
+          : `${prev} quiz__answers__answer--wrong`
+      );
+
+      delay(2000, () => {
+        if (isCorrect) {
+          setQuestionNumber((prev) => prev + 1);
+        } else {
+          setIsGameover(true);
+        }
+      });
+    },
+    [setQuestionNumber, setIsGameover]
+  );
+
   return (
     <div className={"quiz"}>
       <div className="quiz__question">{triggeredQuestion.question}</div>
       <div className="quiz__answers">
-        {triggeredQuestion.answers.map((ans) => (
+        {}
+        {shuffledAnswers.map((ans) => (
           <div
             onClick={() => handleAnswerClick(ans)}
             className={

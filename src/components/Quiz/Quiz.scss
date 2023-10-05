@@ -42,9 +42,9 @@ $fontSize: 1.25rem;
       justify-content: center;
       cursor: pointer;
 
-      &:hover {
-        background: rgb(107, 118, 152);
-      }
+      // &:hover {
+      //   background: rgb(107, 118, 152);
+      // }
 
       &--correct {
         background: green;
