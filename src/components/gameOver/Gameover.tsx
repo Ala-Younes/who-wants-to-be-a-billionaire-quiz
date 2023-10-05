@@ -5,16 +5,12 @@ type Props = {
   setQuestionNumber: React.Dispatch<React.SetStateAction<number>>;
   earnedMoney: string;
 };
-const Gameover = ({
-  setIsGameover,
-  earnedMoney,
-  setQuestionNumber,
-}: Props) => {
-
-
+const Gameover = ({ setIsGameover, earnedMoney, setQuestionNumber }: Props) => {
   return (
     <div className="gameover">
-      <span>You earned : {earnedMoney}</span>
+      <span className="gameover__result">
+        You earned : <span className="gameover__result--amount">{earnedMoney}</span>
+      </span>
       <button
         onClick={() => {
           setQuestionNumber(1);

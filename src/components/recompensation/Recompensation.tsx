@@ -1,13 +1,15 @@
 import { useEffect } from "react";
 import moneyPyramid from "../../data/MoneyPyramid";
 import "./Recompensation.scss";
+import { useQuizGameContext } from "../../context/QuizContext";
 
 type Props = {
-  questionNumber: number;
   setEarnedMoney: React.Dispatch<React.SetStateAction<string>>;
 };
 
-const Recompensation = ({ questionNumber, setEarnedMoney }: Props) => {
+const Recompensation = ({ setEarnedMoney }: Props) => {
+  const questionNumber = useQuizGameContext();
+
   useEffect(() => {
     questionNumber > 1 &&
       setEarnedMoney(() => {

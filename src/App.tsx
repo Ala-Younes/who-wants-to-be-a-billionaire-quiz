@@ -6,6 +6,7 @@ import Recompensation from "./components/recompensation/Recompensation";
 import Timer from "./components/timer/Timer";
 import data from "./data/QuestionsAndAnswers";
 import Gameover from "./components/gameOver/Gameover";
+import { QuizGameContext } from "./context/QuizContext";
 
 function App() {
   const [questionNumber, setQuestionNumber] = useState(1);
@@ -14,38 +15,35 @@ function App() {
 
   return (
     <div className="app-container">
-      {!isGameover ? (
-        <>
-          <div className="quiz-container">
-            <Timer
-              setIsGameover={setIsGameover}
-              questionNumber={questionNumber}
+      <QuizGameContext.Provider value={questionNumber}>
+        {!isGameover ? (
+          <>
+            <div className="quiz-container">
+              <Timer setIsGameover={setIsGameover} />
+              <Quiz
+                data={data}
+                questionNumber={questionNumber}
+                setQuestionNumber={setQuestionNumber}
+                setIsGameover={setIsGameover}
+              />
+            </div>
+            <Recompensation
+              setEarnedMoney={setEarnedMoney}
             />
-            <Quiz
-              data={data}
-              questionNumber={questionNumber}
+          </>
+        ) : (
+          <>
+            <Gameover
+              earnedMoney={earnedMoney}
               setQuestionNumber={setQuestionNumber}
               setIsGameover={setIsGameover}
             />
-          </div>
-          <Recompensation
-            questionNumber={questionNumber}
-            setEarnedMoney={setEarnedMoney}
-          />
-        </>
-      ) : (
-        <>
-          <Gameover
-            earnedMoney={earnedMoney}
-            setQuestionNumber={setQuestionNumber}
-            setIsGameover={setIsGameover}
-          />
-          <Recompensation
-            questionNumber={questionNumber}
-            setEarnedMoney={setEarnedMoney}
-          />
-        </>
-      )}
+            <Recompensation
+              setEarnedMoney={setEarnedMoney}
+            />
+          </>
+        )}
+      </QuizGameContext.Provider>
     </div>
   );
 }

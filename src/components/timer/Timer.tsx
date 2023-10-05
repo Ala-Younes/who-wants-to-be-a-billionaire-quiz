@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import "./Timer.scss";
+import { useQuizGameContext } from "../../context/QuizContext";
 
 type Props = {
-  questionNumber: number;
   setIsGameover: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const Timer = ({ questionNumber, setIsGameover }: Props) => {
+const Timer = ({ setIsGameover }: Props) => {
   const [counter, setCounter] = useState(30);
+  const questionNumber = useQuizGameContext();
 
   useEffect(() => {
     const intervalBySecond = setInterval(() => {
