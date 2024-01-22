@@ -1,27 +1,49 @@
-# React + TypeScript + Vite
+# Quiz App with React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+### Project Insight 📚
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Welcome to the Quiz App! This interactive application is designed for users who enjoy challenging their knowledge. Modeled after the popular "Who Wants to Be a Millionaire," the Quiz App features 15 questions, each with four random answer choices.
 
-## Expanding the ESLint configuration
+**Live Demo:** [Explore the Quiz App](#) <!-- Update with the actual live demo link -->
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+**Screenshots:**
 
-- Configure the top-level `parserOptions` property like this:
+![Quiz Playing](/src/assets/readme/main.png)
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+- _Caption:_ Example of an ongoing quiz
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+![Quiz Result](/src/assets/readme/result.png)
+
+- _Caption:_ Example of quiz results
+
+## Built With
+
+**Technologies Used:**
+
+- React
+- TypeScript
+- Zod (for type checking)
+- SCSS (for styling)
+
+## Features
+
+**Key Features:**
+
+- Utilizes Zod for robust type checking
+- Implements SCSS for a visually appealing and responsive design
+- Utilizes React Context for managing question numbers and user interactions
+
+## Status
+
+**Upcoming Enhancements:**
+
+- Score tracking and leaderboard (local storage)
+- Option for users to create custom quizzes with AI-generated random questions based on chosen themes (Nature, General Knowledge, etc.)
+- Additional quiz themes/categories
+- Improved styling and animations
+
+Feel free to explore the Quiz App and challenge yourself with a variety of interesting questions! Your feedback is always welcome. <!-- Consider adding a call-to-action for feedback or contributions -->
+
+**Happy quizzing!**
